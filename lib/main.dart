@@ -10,17 +10,49 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Future demo',
       debugShowCheckedModeBanner: false,
-      home: MyApp(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: FuturePage(),
     );
   }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class FuturePage extends StatefulWidget {
+  const FuturePage({Key? key}) : super(key: key);
+
+  @override
+  State<FuturePage> createState() => _FuturePageState();
+}
+
+class _FuturePageState extends State<FuturePage> {
+  String result = '';
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Back from the Future"),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            Spacer(),
+            ElevatedButton(
+              onPressed: () {},
+              child: Text("GO!"),
+            ),
+            Spacer(),
+            Text(result.toString()),
+            Spacer(),
+            CircularProgressIndicator(),
+            Spacer()
+          ],
+        ),
+      ),
+    );
   }
 }
